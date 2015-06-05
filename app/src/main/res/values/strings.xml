@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Android Runtime Permissions Example</string>
+
+    <string name="contact_info">Add/read contacts to/from the phones contact list.</string>
+    <string name="contact_name">Contact name:</string>
+    <string name="contact_add">Add contact</string>
+    <string name="contact_added">Contact %s added</string>
+    <string name="contact_read">Read latest contact</string>
+    <string name="contact_latest">Latest contact: %s</string>
+    <string name="contact_permission_granted">Permissions for contacts granted!</string>
+    <string name="contact_permission_denied">Permissions for contacts denied!</string>
+
+    <string name="call_info">Add/read calls to/from the phones call log.</string>
+    <string name="call_number">Call number:</string>
+    <string name="call_add">Add call</string>
+    <string name="call_added">Call to %s added</string>
+    <string name="call_read">Read latest call</string>
+    <string name="call_latest">Latest call: %s</string>
+    <string name="call_permission_granted">Permission for call log granted!</string>
+    <string name="call_permission_denied">Permission for call log denied!</string>
+
+    <string name="reset_settings_info">To reset these permissions go to: Settings -> Apps -> Android Runtime Permissions Example -> Permissions</string>
+</resources>
