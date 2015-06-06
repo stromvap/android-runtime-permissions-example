@@ -42,7 +42,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         // We know that the array only contains one result since we only request one permission
-        // TODO: Do we? Is this a list?
         boolean granted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
         if (REQUEST_CODE_CONTACT == requestCode) {
