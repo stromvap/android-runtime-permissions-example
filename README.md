@@ -1,4 +1,4 @@
-# android-runtime-permissions-example
+# Android M – App Permissions
 
 Nu när Google I/O är över och vi har hunnit smälta att Google Photos vet allt om våra liv så tänkte jag ta tillfället i akt att lära mig lite om de nya funktionerna i Android M och det bästa sättet jag vet är att dyka ner i koden och försöka skapa något enkelt. Bland alla nyheter i Android M så har jag valt att utforska närmare en stor nyhet som kallas för App Permissions.
 
@@ -18,18 +18,18 @@ Jag kommer visa hur man använder det nya behörighetssystemet genom att bygga e
 
 Dessa funktioner kräver olika behörigheter, var och en kommer att visa en dialog som ber om tillåtelse. Det trodde iallafall jag när jag började kolla på App Permissions men det visade sig att så är inte fallet. Google har passat på att förenkla behörigheterna och delat in dem i olika grupper.
 
-I vårt exempel så tillhör ‘skapa kontakt’ och ‘läs kontakter’ samma grupp. Detta gör att om vi ber om tillåtelse för en av dom så kommer vi få tillgång till alla behörigher som är deklarerade i <i>AndroidManifest.xml </i>under samma grupp. Jag går in lite djupare på Manifesten senare.
+I vårt exempel så tillhör ‘skapa kontakt’ och ‘läs kontakter’ samma grupp. Detta gör att om vi ber om tillåtelse för en av dom så kommer vi få tillgång till alla behörigher som är deklarerade i `AndroidManifest.xml` under samma grupp. Jag går in lite djupare på Manifesten senare.
 
 
 ## Android Studio
-För att kunna köra Android M behöver man ladda hem senaste Android Studio (1.3 Preview), Android M SDK (MNC) med tillhörande emulatorer och Build/Platform Tools (23.0.0 rc1). Beskrivning finns <a href="http://developer.android.com/preview/setup-sdk.html" target="_blank">här</a>.
+För att kunna köra Android M behöver man ladda hem senaste Android Studio (1.3 Preview), Android M SDK (MNC) med tillhörande emulatorer och Build/Platform Tools (23.0.0 rc1). Beskrivning finns [här](http://developer.android.com/preview/setup-sdk.html).
 
 När utvecklingsmiljön är uppsatt kan du importera Gradle-projektet som du kan hämta från Gitlab:
 
-´git clone https://github.com/stromvap/android-runtime-permissions-example.git`
+`git clone https://github.com/stromvap/android-runtime-permissions-example.git`
 
 ## Gradle
-För att Gradle ska kunna bygga Android M behöver man göra nedanstående konfigurationer i build.gradle filerna.
+För att Gradle ska kunna bygga Android M behöver man göra nedanstående konfigurationer i `build.gradle` filerna.
 
 &nbsp;
 
@@ -58,7 +58,7 @@ android {
 ```
 
 ## Manifest
-I *AndroidManifest.xml* deklarerar man vilka behörigheter appen vill få tillgång till:
+I `AndroidManifest.xml deklarerar man vilka behörigheter appen vill få tillgång till:
 
 ```
 <manifest>
@@ -73,9 +73,9 @@ I *AndroidManifest.xml* deklarerar man vilka behörigheter appen vill få tillg�
 </manifest>
 ```
 
-Som ni ser så är det ingen skillnad på deklarationen mot tidigare SDK:er och ‘grupperna’ är bara logiska grupper. Om appen får tillgång till en behörighet kommer man automatiskt få tillgång till alla behörigheter i samma grupp som är deklarerade i Manifesten. Mer information om de olika grupperna och hur behörigheter funkar i symbios med tidigare version av Android kan ni läsa om <a href="http://developer.android.com/preview/features/runtime-permissions.html#coding" target="_blank">här</a>.
+Som ni ser så är det ingen skillnad på deklarationen mot tidigare SDK:er och ‘grupperna’ är bara logiska grupper. Om appen får tillgång till en behörighet kommer man automatiskt få tillgång till alla behörigheter i samma grupp som är deklarerade i Manifesten. Mer information om de olika grupperna och hur behörigheter funkar i symbios med tidigare version av Android kan ni läsa om [här](http://developer.android.com/preview/features/runtime-permissions.html#coding).
 
-Behörigheter har även olika skyddsnivåer (normal, dangerous, signature, signatureOrSystem). Alla behörigheter som faller inom ‘normal’ och som är deklarerade i <em>AndroidManifest.xml</em> kommer appen automatiskt få tillgång till utan användarens medverkan. Detta för att bevara användaren från att behöva ge tillgång till t.ex. internet och alarmfunktioner för varje app. De olika skyddsnivåerna kan man läsa mer om <a href="http://developer.android.com/guide/topics/manifest/permission-element.html" target="_blank">här</a>.
+Behörigheter har även olika skyddsnivåer (normal, dangerous, signature, signatureOrSystem). Alla behörigheter som faller inom ‘normal’ och som är deklarerade i `AndroidManifest.xml` kommer appen automatiskt få tillgång till utan användarens medverkan. Detta för att bevara användaren från att behöva ge tillgång till t.ex. internet och alarmfunktioner för varje app. De olika skyddsnivåerna kan man läsa mer om [här](http://developer.android.com/guide/topics/manifest/permission-element.html).
 
 ## Behörigheter
 Det första man ska göra när en användare vill komma åt en funktion som kräver en specifik behörighet är att kolla om appen redan har tillåtelse till denna:
@@ -88,7 +88,7 @@ if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PE
 }
 ```
 
-(Alla anrop görs på en *Activity*)
+(Alla anrop görs på en `Activity`)
 
 Om appen har tillgång så kan man anropa API:et för att utföra funktionen. Om appen inte har tillgång så måste man be om tillåtelse:
 
@@ -98,7 +98,7 @@ Nu visas en dialog som användaren väljer att godkänna eller neka.
 
 ![app_permissions_image_2](screens/app_permissions_image_2.png)
 
-Svaret hanteras i en callback som implementeras i vår *Activity*:
+Svaret hanteras i en callback som implementeras i vår `Activity`:
 
 ```
 @Override
@@ -125,7 +125,7 @@ Nu har vi gått igenom de grundläggande funktionerna för att kolla behörighet
 * Förklara varför du behöver behörigheten
 * Hantera nekade förfrågningar på ett bra sätt
 
-Ytterligare en sak att tänka på är att användaren kan gå in i <em>Settings</em> -&gt; <em>Apps</em> -&gt; <em>App-name</em> -&gt; <em>Permissions</em> och stänga av behörighetsgrupper. Därför är det extra viktigt att alltid kolla om man har behörighet oavsett om appen har fått tillåtelse tidigare eller inte.
+Ytterligare en sak att tänka på är att användaren kan gå in i *Settings* -> *Apps* -> *App-name* -> *Permissions* och stänga av behörighetsgrupper. Därför är det extra viktigt att alltid kolla om man har behörighet oavsett om appen har fått tillåtelse tidigare eller inte.
 
 ![app_permissions_image_3](screens/app_permissions_image_3.png)
 
@@ -134,14 +134,14 @@ Ytterligare en sak att tänka på är att användaren kan gå in i <em>Settings<
 
 På återseende.
 
-## Länkar<
-<a href="http://developer.android.com/preview/setup-sdk.html" target="_blank">Setup SDK</a>
+## Länkar
+[Setup SDK](http://developer.android.com/preview/setup-sdk.html)
 
-<a href="http://developer.android.com/preview/api-overview.html" target="_blank">API Overview</a>
-<a href="http://developer.android.com/preview/features/runtime-permissions.html" target="_blank">Runtime Permissions</a>
+[API Overview](http://developer.android.com/preview/api-overview.html)
+[Runtime Permissions](http://developer.android.com/preview/features/runtime-permissions.html)
 
-<a href="https://www.youtube.com/watch?v=7V-fIGMDsmE" target="_blank">Google I/O 2015 Keynote</a>
-<a href="https://www.youtube.com/watch?v=ndBdf1_oOGA" target="_blank">Google I/O 2015 What’s new in Android</a>
-<a href="https://www.youtube.com/watch?v=f17qe9vZ8RM" target="_blank">Google I/O 2015 Android M Permissions</a>
+[Google I/O 2015 Keynote](https://www.youtube.com/watch?v=7V-fIGMDsmE)
+[Google I/O 2015 What’s new in Android](https://www.youtube.com/watch?v=ndBdf1_oOGA)
+[Google I/O 2015 Android M Permissions](https://www.youtube.com/watch?v=f17qe9vZ8RM)
 
-<a href="https://twitter.com/davey_burke/status/604015610100469760" target="_blank">Milkshake?</a>
+[Milkshake?](https://twitter.com/davey_burke/status/604015610100469760)
