@@ -58,7 +58,7 @@ android {
 ```
 
 ## Manifest
-I `AndroidManifest.xml deklarerar man vilka behörigheter appen vill få tillgång till:
+I `AndroidManifest.xml` deklarerar man vilka behörigheter appen vill få tillgång till:
 
 ```
 <manifest>
@@ -135,13 +135,13 @@ Ytterligare en sak att tänka på är att användaren kan gå in i *Settings* ->
 På återseende.
 
 ## Länkar
-[Setup SDK](http://developer.android.com/preview/setup-sdk.html)
+[Setup SDK](http://developer.android.com/preview/setup-sdk.html)  
 
-[API Overview](http://developer.android.com/preview/api-overview.html)
-[Runtime Permissions](http://developer.android.com/preview/features/runtime-permissions.html)
+[API Overview](http://developer.android.com/preview/api-overview.html)  
+[Runtime Permissions](http://developer.android.com/preview/features/runtime-permissions.html)  
 
-[Google I/O 2015 Keynote](https://www.youtube.com/watch?v=7V-fIGMDsmE)
-[Google I/O 2015 What’s new in Android](https://www.youtube.com/watch?v=ndBdf1_oOGA)
-[Google I/O 2015 Android M Permissions](https://www.youtube.com/watch?v=f17qe9vZ8RM)
+[Google I/O 2015 Keynote](https://www.youtube.com/watch?v=7V-fIGMDsmE)  
+[Google I/O 2015 What’s new in Android](https://www.youtube.com/watch?v=ndBdf1_oOGA)  
+[Google I/O 2015 Android M Permissions](https://www.youtube.com/watch?v=f17qe9vZ8RM)  
 
-[Milkshake?](https://twitter.com/davey_burke/status/604015610100469760)
+[Milkshake?](https://twitter.com/davey_burke/status/604015610100469760)  
